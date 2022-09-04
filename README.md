@@ -5,5 +5,5 @@
 - Grabs network information
 - Discord webhook support
 
-![image](https://user-images.githubusercontent.com/58748338/188317159-bbd09ef5-828e-4967-8361-2b102f211cdf.png)
+![image](https://user-images.githubusercontent.com/58748338/188317421-cfa80475-71bd-48c1-938a-b36e6c7e85d2.png)
 
