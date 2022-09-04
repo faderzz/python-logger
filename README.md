@@ -1,5 +1,7 @@
 # python-logger
 
+⚠ DISCLAIMER - THIS WAS CREATED FOR EDUCATIONAL PURPOSES ONLY. I AM NOT RESPONSIBLE FOR ANY ACTIONS YOU MAY DO WITH THIS SCRIPT ⚠
+
 # Features:
 - Grabs system information
 - Grabs network information
