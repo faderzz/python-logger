@@ -11,5 +11,6 @@
 
 # TO-DO
 - Bot to interact with system
-- Remote execution of bat scripts
+- Remote code execution
+- Clean up code
 
